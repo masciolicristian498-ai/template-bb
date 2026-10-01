@@ -1,0 +1,408 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BookingForm from '../components/BookingForm.astro';
+---
+
+<Layout title="Residenza dei Fiori – B&B nel cuore di Roma">
+
+  <!-- ═══════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════ -->
+  <header id="top" class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#top" class="flex items-center gap-2.5 text-stone-800 hover:text-amber-700 transition">
+        <!-- Flower / leaf icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s-8-5.4-8-12a8 8 0 0 1 16 0c0 6.6-8 12-8 12z"/>
+          <path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="font-serif text-lg font-semibold tracking-wide">Residenza dei Fiori</span>
+      </a>
+
+      <!-- Nav links – hidden on mobile -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-stone-600">
+        <a href="#chi-siamo"  class="hover:text-amber-700 transition">Chi siamo</a>
+        <a href="#camere"     class="hover:text-amber-700 transition">Camere</a>
+        <a href="#posizione"  class="hover:text-amber-700 transition">Posizione</a>
+        <a href="#prenota"    class="hover:text-amber-700 transition">Contatti</a>
+      </nav>
+
+      <!-- CTA -->
+      <a
+        href="#prenota"
+        class="hidden md:inline-flex items-center gap-1.5 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition shadow-sm"
+      >
+        Prenota ora
+      </a>
+
+      <!-- Hamburger mobile -->
+      <button id="menu-btn" aria-label="Apri menu"
+        class="md:hidden p-2 rounded-lg text-stone-600 hover:bg-stone-100 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-stone-100 bg-white px-6 py-4 space-y-3 text-sm font-medium text-stone-700">
+      <a href="#chi-siamo" class="block hover:text-amber-700">Chi siamo</a>
+      <a href="#camere"    class="block hover:text-amber-700">Camere</a>
+      <a href="#posizione" class="block hover:text-amber-700">Posizione</a>
+      <a href="#prenota"   class="block hover:text-amber-700">Prenota</a>
+    </div>
+  </header>
+
+  <main class="pt-16 font-sans">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════ -->
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-stone-100">
+      <div class="absolute inset-0 bg-gradient-to-br from-stone-300 via-stone-200 to-amber-100 opacity-80"></div>
+      <div class="absolute inset-0 opacity-[0.04]"
+        style="background-image:url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23000\' fill-opacity=\'1\'%3E%3Cpath d=\'M0 0h1v1H0zm40 0h1v1h-1zm0 40h1v1h-1zM0 40h1v1H0z\'/%3E%3C/g%3E%3C/svg%3E')">
+      </div>
+
+      <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+        <span class="inline-block text-amber-700 text-xs font-semibold tracking-[0.2em] uppercase mb-5 border border-amber-300 bg-amber-50 px-4 py-1.5 rounded-full">
+          B&amp;B · Roma Centro · Rione Monti
+        </span>
+        <h1 class="font-serif text-5xl md:text-7xl font-bold text-stone-800 leading-[1.1] mb-6">
+          Il tuo rifugio<br/>nel cuore di Roma
+        </h1>
+        <p class="text-stone-600 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed font-light">
+          Colazione fatta in casa, camere eleganti e la città eterna a due passi dalla porta.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#prenota"
+            class="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-base px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200">
+            Prenota ora
+          </a>
+          <a href="#camere"
+            class="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white text-stone-800 font-semibold text-base px-8 py-3.5 rounded-full shadow transition-all duration-200">
+            Scopri le camere
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll arrow -->
+      <a href="#chi-siamo"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 text-stone-400 hover:text-amber-700 transition animate-bounce">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CHI SIAMO
+    ════════════════════════════════════════════ -->
+    <section id="chi-siamo" class="py-24 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="inline-block text-amber-600 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Chi siamo</span>
+          <h2 class="font-serif text-4xl font-bold text-stone-800 mb-6 leading-snug">
+            Ospitalità autentica,<br/>a misura di persona
+          </h2>
+          <p class="text-stone-500 text-lg leading-relaxed mb-5">
+            Benvenuti alla <strong class="text-stone-800 font-semibold">Residenza dei Fiori</strong>, un piccolo gioiello nel rione Monti, a pochi passi dal Colosseo. La nostra è una casa vera — non un albergo — dove ogni mattina prepariamo la colazione con prodotti locali e biologici.
+          </p>
+          <p class="text-stone-500 text-lg leading-relaxed mb-10">
+            Siamo Giulia e Marco, romani doc, felici di consigliarti ristoranti senza turisti, itinerari segreti e tutto ciò che rende Roma unica per chi sa dove guardare.
+          </p>
+
+          <ul class="space-y-4">
+            {[
+              {
+                label: 'Colazione artigianale ogni mattina',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+              },
+              {
+                label: 'Check-in flessibile dalle 14:00',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+              },
+              {
+                label: 'Mappa dei locali consigliati inclusa',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>`,
+              },
+            ].map(item => (
+              <li class="flex items-center gap-4">
+                <span class="flex-shrink-0 w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center" set:html={item.icon} />
+                <span class="text-stone-700 font-medium">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Placeholder foto -->
+        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5] bg-gradient-to-br from-amber-50 to-stone-200 flex items-center justify-center">
+          <div class="text-center text-stone-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-3 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <p class="text-sm font-medium opacity-50 tracking-wide">Foto B&amp;B</p>
+          </div>
+          <div class="absolute bottom-6 left-6 bg-white rounded-2xl shadow-lg px-5 py-3">
+            <p class="text-xs text-stone-400 font-medium tracking-wide uppercase">In attività dal</p>
+            <p class="text-3xl font-serif font-bold text-amber-600">2012</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         LE NOSTRE CAMERE
+    ════════════════════════════════════════════ -->
+    <section id="camere" class="py-24 px-6 bg-stone-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="inline-block text-amber-600 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Le nostre camere</span>
+          <h2 class="font-serif text-4xl font-bold text-stone-800">Spazi pensati per il tuo comfort</h2>
+          <p class="mt-3 text-stone-500 text-lg max-w-xl mx-auto font-light">
+            Ogni camera è arredata con cura, dotata di tutto il necessario e immersa nel silenzio del centro storico.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              name: 'Camera Doppia',
+              desc: 'Accogliente e luminosa, con letto matrimoniale, parquet antico e vista sul cortile fiorito.',
+              badge: 'Da €90/notte',
+              amenities: [
+                { label: 'Wi-Fi',  icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
+                { label: 'A/C',    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
+                { label: 'Doccia', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l1.5-1.5A5 5 0 0 1 12 9h0a5 5 0 0 1 5 5v1"/><path d="M20 14v6"/><path d="M4 14v6"/><path d="M4 20h16"/></svg>` },
+                { label: 'TV',     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>` },
+              ],
+            },
+            {
+              name: 'Camera Doppia Superior',
+              desc: 'Più spaziosa, con soffitti affrescati originali del \'700, vasca da bagno e minibar incluso.',
+              badge: 'Da €130/notte',
+              amenities: [
+                { label: 'Wi-Fi',   icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
+                { label: 'A/C',     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
+                { label: 'Vasca',   icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6L9 2"/><path d="M15 6V2"/><path d="M2 12h20v4a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-4z"/><path d="M4 12V8a2 2 0 0 1 2-2h2"/></svg>` },
+                { label: 'Minibar', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22H16"/><path d="M12 11V22"/><path d="M20 2L16.5 11H7.5L4 2Z"/></svg>` },
+              ],
+            },
+            {
+              name: 'Suite Junior',
+              desc: 'Il nostro fiore all\'occhiello: salottino separato, terrazzino privato con vista sui tetti di Roma.',
+              badge: 'Da €180/notte',
+              amenities: [
+                { label: 'Wi-Fi',             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
+                { label: 'A/C',               icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
+                { label: 'Terrazzo',          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>` },
+                { label: 'Colazione in stanza', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>` },
+              ],
+            },
+          ].map((room) => (
+            <article class="bg-white rounded-3xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col group">
+              <!-- Placeholder immagine -->
+              <div class="aspect-video bg-gradient-to-br from-stone-100 to-amber-50 flex items-center justify-center relative overflow-hidden">
+                <div class="text-center text-stone-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                  <p class="text-xs font-medium opacity-60 tracking-wide">Foto camera</p>
+                </div>
+                <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                  {room.badge}
+                </span>
+              </div>
+
+              <div class="p-6 flex flex-col flex-1">
+                <h3 class="font-serif text-xl font-bold text-stone-800 mb-2">{room.name}</h3>
+                <p class="text-stone-500 text-sm leading-relaxed flex-1">{room.desc}</p>
+
+                <div class="mt-5 pt-4 border-t border-stone-100 flex flex-wrap gap-2">
+                  {room.amenities.map((a) => (
+                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-stone-600 bg-stone-100 px-2.5 py-1.5 rounded-full">
+                      <span class="text-amber-600" set:html={a.icon} />
+                      {a.label}
+                    </span>
+                  ))}
+                </div>
+
+                <a href="#prenota"
+                  class="mt-5 w-full text-center text-sm font-semibold text-amber-700 hover:text-white border border-amber-600 hover:bg-amber-600 py-2.5 rounded-xl transition-all duration-200">
+                  Richiedi disponibilità
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         POSIZIONE E DISTANZE
+    ════════════════════════════════════════════ -->
+    <section id="posizione" class="py-24 px-6 bg-white">
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+        <div>
+          <span class="inline-block text-amber-600 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Dove siamo</span>
+          <h2 class="font-serif text-4xl font-bold text-stone-800 mb-4 leading-snug">
+            Nel cuore di Rione Monti
+          </h2>
+          <p class="text-stone-500 text-lg leading-relaxed mb-10 font-light">
+            Siamo a <strong class="text-stone-700 font-medium">Via dei Serpenti 48, Roma</strong> — nel quartiere più antico e vivace della città, circondati da trattorie, botteghe e meraviglie storiche.
+          </p>
+
+          <ul class="space-y-3">
+            {[
+              {
+                place: 'Colosseo',
+                time: '15 min a piedi',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10h18"/><path d="M5 10V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4"/><path d="M9 21V10"/><path d="M15 21V10"/><path d="M5 6V3h14v3"/></svg>`,
+              },
+              {
+                place: 'Stazione Termini',
+                time: '10 min a piedi',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21l-4-4-4 4"/><path d="M2 12h20"/><path d="M7 12v5"/><path d="M17 12v5"/><path d="M7 7V3"/><path d="M17 7V3"/></svg>`,
+              },
+              {
+                place: 'Fori Imperiali',
+                time: '12 min a piedi',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="3 6 12 3 21 6"/><line x1="4" y1="10" x2="4" y2="21"/><line x1="8" y1="10" x2="8" y2="21"/><line x1="12" y1="10" x2="12" y2="21"/><line x1="16" y1="10" x2="16" y2="21"/><line x1="20" y1="10" x2="20" y2="21"/></svg>`,
+              },
+              {
+                place: 'Fontana di Trevi',
+                time: '25 min a piedi',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 4 7 13 7 13s7-9 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+              },
+              {
+                place: 'Metro B – Cavour',
+                time: '4 min a piedi',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="4"/><path d="M9 17h6"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/></svg>`,
+              },
+              {
+                place: 'Aeroporto Fiumicino',
+                time: '35 min in treno',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19 2c-2-2-4-2-5.5-.5L10 5 1.8 6.2l4 4L3 14l3 3 3.8-2.8 4 4z"/></svg>`,
+              },
+            ].map(item => (
+              <li class="flex items-center gap-4 p-4 rounded-2xl border border-stone-100 hover:border-amber-200 hover:bg-amber-50 transition-colors duration-200">
+                <span class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0" set:html={item.icon} />
+                <div>
+                  <p class="font-semibold text-stone-800 text-sm">{item.place}</p>
+                  <p class="text-stone-400 text-sm">{item.time}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Placeholder mappa -->
+        <div class="sticky top-24">
+          <div class="rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-stone-200 to-stone-300 aspect-square flex flex-col items-center justify-center gap-4 text-stone-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+            </svg>
+            <p class="text-sm font-medium opacity-50 tracking-wide">Mappa interattiva</p>
+            <a
+              href="https://maps.google.com/?q=Via+dei+Serpenti+48+Roma"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-sm font-semibold bg-white text-stone-700 hover:text-amber-700 px-5 py-2.5 rounded-full shadow hover:shadow-md transition"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+              Apri su Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SEZIONE PRENOTAZIONE
+    ════════════════════════════════════════════ -->
+    <section id="prenota" class="py-24 px-6 bg-stone-50">
+      <div class="max-w-6xl mx-auto text-center mb-4">
+        <span class="inline-block text-amber-600 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Prenota</span>
+        <h2 class="font-serif text-4xl font-bold text-stone-800">Richiedi la tua stanza</h2>
+        <p class="mt-3 text-stone-500 text-lg font-light">Ti risponderemo su WhatsApp entro poche ore.</p>
+      </div>
+      <BookingForm />
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="bg-stone-900 text-stone-400 pt-16 pb-8 px-6 font-sans">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 pb-12 border-b border-stone-800">
+
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s-8-5.4-8-12a8 8 0 0 1 16 0c0 6.6-8 12-8 12z"/>
+            </svg>
+            <span class="font-serif text-white text-lg font-semibold">Residenza dei Fiori</span>
+          </div>
+          <p class="text-sm leading-relaxed text-stone-500">
+            Un B&amp;B familiare nel cuore di Rione Monti.<br/>
+            Ospitalità autentica, colazione artigianale e Roma a portata di mano.
+          </p>
+        </div>
+
+        <!-- Contatti -->
+        <div>
+          <h4 class="text-white font-semibold mb-5 text-xs uppercase tracking-[0.15em]">Contatti</h4>
+          <ul class="space-y-3.5 text-sm text-stone-500">
+            <li class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-0.5 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>Via dei Serpenti 48<br/>00184 Roma (RM)</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <a href="tel:+393331234567" class="hover:text-amber-400 transition">+39 333 123 4567</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:info@residenzadeifiori.it" class="hover:text-amber-400 transition">info@residenzadeifiori.it</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Orari -->
+        <div>
+          <h4 class="text-white font-semibold mb-5 text-xs uppercase tracking-[0.15em]">Informazioni</h4>
+          <ul class="space-y-2.5 text-sm text-stone-500">
+            <li class="flex justify-between"><span>Check-in</span><span class="text-stone-300">dalle 14:00</span></li>
+            <li class="flex justify-between"><span>Check-out</span><span class="text-stone-300">entro le 11:00</span></li>
+            <li class="flex justify-between"><span>Reception</span><span class="text-stone-300">8:00 – 22:00</span></li>
+          </ul>
+          <div class="mt-6 flex gap-4">
+            <a href="#" class="text-xs text-stone-600 hover:text-amber-400 transition underline underline-offset-2">Privacy Policy</a>
+            <a href="#" class="text-xs text-stone-600 hover:text-amber-400 transition underline underline-offset-2">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center text-xs text-stone-600">
+        © {new Date().getFullYear()} Residenza dei Fiori · Giulia e Marco Bianchi · P.IVA 12345678901
+      </div>
+    </div>
+  </footer>
+
+</Layout>
+
+<script>
+  const btn  = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => menu.classList.add('hidden'))
+  );
+</script>
