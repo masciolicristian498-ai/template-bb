@@ -72,16 +72,16 @@ import BookingForm from '../components/BookingForm.astro';
       <div class="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/30 to-stone-900/60"></div>
 
       <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        <span class="inline-block text-amber-300 text-xs font-semibold tracking-[0.2em] uppercase mb-5 border border-amber-400/50 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full">
+        <span class="inline-block text-amber-300 text-xs font-semibold tracking-[0.2em] uppercase mb-5 border border-amber-400/50 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full opacity-0 animate-fade-in-up" style="animation-delay: 0.1s">
           B&amp;B · Roma Centro · Rione Monti
         </span>
-        <h1 class="font-serif text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6">
+        <h1 class="font-serif text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s">
           Il tuo rifugio<br/>nel cuore di Roma
         </h1>
-        <p class="text-stone-200 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed font-light">
+        <p class="text-stone-200 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed font-light opacity-0 animate-fade-in-up" style="animation-delay: 0.3s">
           Colazione fatta in casa, camere eleganti e la città eterna a due passi dalla porta.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up" style="animation-delay: 0.4s">
           <a href="#prenota"
             class="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-base px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200">
             Prenota ora
@@ -142,19 +142,36 @@ import BookingForm from '../components/BookingForm.astro';
           </ul>
         </div>
 
-        <!-- Foto Chi siamo -->
-        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
-          <img
-            src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80"
-            alt="Colazione artigianale alla Residenza dei Fiori"
-            class="w-full h-full object-cover object-center"
-            loading="lazy"
-          />
-          <!-- Overlay leggero per badge -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-          <div class="absolute bottom-6 left-6 bg-white rounded-2xl shadow-lg px-5 py-3">
-            <p class="text-xs text-stone-400 font-medium tracking-wide uppercase">In attività dal</p>
-            <p class="text-3xl font-serif font-bold text-amber-600">2012</p>
+        <!-- Griglia fotografica Chi siamo -->
+        <div class="grid grid-cols-2 gap-4 h-full min-h-[400px]">
+          <div class="relative rounded-3xl overflow-hidden shadow-xl col-span-1 row-span-2">
+            <img
+              src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=600&q=80"
+              alt="Colazione artigianale"
+              class="w-full h-full object-cover object-center"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-sm">
+              <p class="text-[10px] text-stone-500 font-semibold tracking-wide uppercase">In attività dal</p>
+              <p class="text-xl font-serif font-bold text-amber-600">2012</p>
+            </div>
+          </div>
+          <div class="relative rounded-3xl overflow-hidden shadow-md">
+            <img
+              src="https://images.unsplash.com/photo-1590490359683-658d3d23f972?auto=format&fit=crop&w=400&q=80"
+              alt="Dettaglio design B&B"
+              class="w-full h-full object-cover object-center"
+              loading="lazy"
+            />
+          </div>
+          <div class="relative rounded-3xl overflow-hidden shadow-md">
+            <img
+              src="https://images.unsplash.com/photo-1515542622106-78bda8cd247a?auto=format&fit=crop&w=400&q=80"
+              alt="Vista su Roma"
+              class="w-full h-full object-cover object-center"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -176,11 +193,17 @@ import BookingForm from '../components/BookingForm.astro';
         <div class="grid md:grid-cols-3 gap-8">
           {[
             {
+              id: 'room-doppia',
               name: 'Camera Doppia',
               desc: 'Accogliente e luminosa, con letto matrimoniale, parquet antico e vista sul cortile fiorito.',
               badge: 'Da €90/notte',
               imageUrl: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80',
               imageAlt: 'Camera doppia elegante con letto matrimoniale',
+              gallery: [
+                'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1598928506311-c55dd58c56b2?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=800&q=80'
+              ],
               amenities: [
                 { label: 'Wi-Fi',  icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
                 { label: 'A/C',    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
@@ -189,11 +212,17 @@ import BookingForm from '../components/BookingForm.astro';
               ],
             },
             {
+              id: 'room-superior',
               name: 'Camera Doppia Superior',
               desc: 'Più spaziosa, con soffitti affrescati originali del \'700, vasca da bagno e minibar incluso.',
               badge: 'Da €130/notte',
               imageUrl: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
               imageAlt: 'Camera superior con arredi eleganti e vasca',
+              gallery: [
+                'https://images.unsplash.com/photo-1630650231816-a9f91de573a6?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80'
+              ],
               amenities: [
                 { label: 'Wi-Fi',   icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
                 { label: 'A/C',     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
@@ -202,11 +231,17 @@ import BookingForm from '../components/BookingForm.astro';
               ],
             },
             {
+              id: 'room-suite',
               name: 'Suite Junior',
               desc: 'Il nostro fiore all\'occhiello: salottino separato, terrazzino privato con vista sui tetti di Roma.',
               badge: 'Da €180/notte',
               imageUrl: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
               imageAlt: 'Suite junior con terrazzo e vista sui tetti di Roma',
+              gallery: [
+                'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1574643156929-51fa098b0394?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=800&q=80'
+              ],
               amenities: [
                 { label: 'Wi-Fi',             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
                 { label: 'A/C',               icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
@@ -215,39 +250,78 @@ import BookingForm from '../components/BookingForm.astro';
               ],
             },
           ].map((room) => (
-            <article class="bg-white rounded-3xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col group">
-              <!-- Immagine camera reale -->
-              <div class="aspect-video relative overflow-hidden">
-                <img
-                  src={room.imageUrl}
-                  alt={room.imageAlt}
-                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-                  {room.badge}
-                </span>
-              </div>
-
-              <div class="p-6 flex flex-col flex-1">
-                <h3 class="font-serif text-xl font-bold text-stone-800 mb-2">{room.name}</h3>
-                <p class="text-stone-500 text-sm leading-relaxed flex-1">{room.desc}</p>
-
-                <div class="mt-5 pt-4 border-t border-stone-100 flex flex-wrap gap-2">
-                  {room.amenities.map((a) => (
-                    <span class="inline-flex items-center gap-1.5 text-xs font-medium text-stone-600 bg-stone-100 px-2.5 py-1.5 rounded-full">
-                      <span class="text-amber-600" set:html={a.icon} />
-                      {a.label}
-                    </span>
-                  ))}
+            <>
+              <article class="bg-white rounded-3xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col group relative">
+                <!-- Immagine camera reale -->
+                <div class="aspect-video relative overflow-hidden">
+                  <img
+                    src={room.imageUrl}
+                    alt={room.imageAlt}
+                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                    {room.badge}
+                  </span>
                 </div>
 
-                <a href="#prenota"
-                  class="mt-5 w-full text-center text-sm font-semibold text-amber-700 hover:text-white border border-amber-600 hover:bg-amber-600 py-2.5 rounded-xl transition-all duration-200">
-                  Richiedi disponibilità
-                </a>
-              </div>
-            </article>
+                <div class="p-6 flex flex-col flex-1">
+                  <h3 class="font-serif text-xl font-bold text-stone-800 mb-2">{room.name}</h3>
+                  <p class="text-stone-500 text-sm leading-relaxed flex-1">{room.desc}</p>
+
+                  <div class="mt-5 pt-4 border-t border-stone-100 flex flex-wrap gap-2">
+                    {room.amenities.map((a) => (
+                      <span class="inline-flex items-center gap-1.5 text-xs font-medium text-stone-600 bg-stone-100 px-2.5 py-1.5 rounded-full">
+                        <span class="text-amber-600" set:html={a.icon} />
+                        {a.label}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div class="mt-6 flex flex-col gap-3">
+                    <button
+                      onclick={`document.getElementById('${room.id}').showModal()`}
+                      class="w-full text-center text-sm font-semibold text-white bg-stone-800 hover:bg-stone-900 active:scale-95 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                      Vedi dettagli e foto
+                    </button>
+                    <a href="#prenota"
+                      class="w-full text-center text-sm font-semibold text-amber-700 hover:text-white border border-amber-600 hover:bg-amber-600 py-2.5 rounded-xl transition-all duration-200">
+                      Richiedi disponibilità
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Modale Lightbox (dialog) -->
+              <dialog id={room.id} class="backdrop:bg-stone-900/80 p-0 rounded-3xl shadow-2xl max-w-3xl w-11/12 mx-auto open:animate-in open:fade-in open:zoom-in-95 bg-white overflow-hidden">
+                <div class="p-6 border-b border-stone-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur z-10">
+                  <h3 class="font-serif text-2xl font-bold text-stone-800">{room.name}</h3>
+                  <form method="dialog">
+                    <button class="p-2 rounded-full hover:bg-stone-100 text-stone-500 hover:text-stone-800 transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                  </form>
+                </div>
+                <div class="p-6">
+                  <p class="text-stone-600 text-base mb-6 leading-relaxed">{room.desc}</p>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {room.gallery.map((img) => (
+                      <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-sm">
+                        <img src={img} alt="Foto dettaglio camera" class="w-full h-full object-cover object-center hover:scale-110 transition-transform duration-500" loading="lazy" />
+                      </div>
+                    ))}
+                  </div>
+                  <div class="mt-8 text-center">
+                    <form method="dialog">
+                      <a href="#prenota" onclick={`document.getElementById('${room.id}').close()`} class="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm px-6 py-3 rounded-full shadow transition-all duration-200">
+                        Prenota questa camera
+                      </a>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
+            </>
           ))}
         </div>
       </div>
@@ -344,6 +418,46 @@ import BookingForm from '../components/BookingForm.astro';
         <p class="mt-3 text-stone-500 text-lg font-light">Ti risponderemo su WhatsApp entro poche ore.</p>
       </div>
       <BookingForm />
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         RECENSIONI
+    ════════════════════════════════════════════ -->
+    <section class="py-24 px-6 bg-white border-t border-stone-100">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="inline-block text-amber-600 text-xs font-semibold tracking-[0.2em] uppercase mb-4">Dicono di noi</span>
+          <h2 class="font-serif text-4xl font-bold text-stone-800">Cosa amano i nostri ospiti</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              name: 'Laura & Matteo',
+              text: '"Un soggiorno meraviglioso! La colazione di Giulia è qualcosa di eccezionale, con dolci fatti in casa ogni mattina. Posizione perfetta per girare a piedi."',
+            },
+            {
+              name: 'Sophie M.',
+              text: '"Il B&B più accogliente in cui sia mai stata. La cura dei dettagli nella camera e i consigli di Marco per i ristoranti locali hanno reso il viaggio indimenticabile."',
+            },
+            {
+              name: 'Alessandro',
+              text: '"Pulizia impeccabile, stanza silenziosa nonostante si trovi nel cuore pulsante di Roma. Un vero rifugio dopo una giornata di camminate. Torneremo sicuramente!"',
+            }
+          ].map((review) => (
+            <div class="bg-stone-50 p-8 rounded-3xl relative">
+              <div class="text-amber-400 flex gap-1 mb-6">
+                {[1, 2, 3, 4, 5].map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                ))}
+              </div>
+              <p class="text-stone-600 text-lg leading-relaxed mb-6 italic">{review.text}</p>
+              <p class="text-stone-800 font-semibold font-serif">— {review.name}</p>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-stone-200/50 absolute top-4 right-4 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
 
   </main>
