@@ -10,17 +10,7 @@ const rooms = [
 const today = new Date().toISOString().split('T')[0];
 ---
 
-<section class="w-full bg-white py-16 px-4">
-  <div class="max-w-2xl mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-10">
-      <span class="inline-block text-amber-600 text-sm font-semibold tracking-widest uppercase mb-2">
-        Prenota ora
-      </span>
-      <h2 class="text-3xl font-bold text-gray-900">Richiedi la tua stanza</h2>
-      <p class="mt-2 text-gray-500">Compila il modulo e ti risponderemo su WhatsApp in pochi minuti.</p>
-    </div>
-
+<div class="w-full max-w-2xl mx-auto">
     <!-- Form card -->
     <form
       id="booking-form"
@@ -156,8 +146,7 @@ const today = new Date().toISOString().split('T')[0];
         Invia richiesta su WhatsApp
       </button>
     </form>
-  </div>
-</section>
+</div>
 
 <script>
   document.addEventListener('astro:page-load', () => {
