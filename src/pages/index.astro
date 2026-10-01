@@ -60,20 +60,25 @@ import BookingForm from '../components/BookingForm.astro';
     <!-- ═══════════════════════════════════════════
          HERO
     ════════════════════════════════════════════ -->
-    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-stone-100">
-      <div class="absolute inset-0 bg-gradient-to-br from-stone-300 via-stone-200 to-amber-100 opacity-80"></div>
-      <div class="absolute inset-0 opacity-[0.04]"
-        style="background-image:url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23000\' fill-opacity=\'1\'%3E%3Cpath d=\'M0 0h1v1H0zm40 0h1v1h-1zm0 40h1v1h-1zM0 40h1v1H0z\'/%3E%3C/g%3E%3C/svg%3E')">
-      </div>
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-stone-900">
+      <!-- Foto Roma reale -->
+      <img
+        src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1920&q=80"
+        alt="Colosseo di Roma al tramonto"
+        class="absolute inset-0 w-full h-full object-cover object-center opacity-50"
+        loading="eager"
+      />
+      <!-- Overlay gradiente per leggibilità testo -->
+      <div class="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/30 to-stone-900/60"></div>
 
       <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        <span class="inline-block text-amber-700 text-xs font-semibold tracking-[0.2em] uppercase mb-5 border border-amber-300 bg-amber-50 px-4 py-1.5 rounded-full">
+        <span class="inline-block text-amber-300 text-xs font-semibold tracking-[0.2em] uppercase mb-5 border border-amber-400/50 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full">
           B&amp;B · Roma Centro · Rione Monti
         </span>
-        <h1 class="font-serif text-5xl md:text-7xl font-bold text-stone-800 leading-[1.1] mb-6">
+        <h1 class="font-serif text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6">
           Il tuo rifugio<br/>nel cuore di Roma
         </h1>
-        <p class="text-stone-600 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed font-light">
+        <p class="text-stone-200 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed font-light">
           Colazione fatta in casa, camere eleganti e la città eterna a due passi dalla porta.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -137,14 +142,16 @@ import BookingForm from '../components/BookingForm.astro';
           </ul>
         </div>
 
-        <!-- Placeholder foto -->
-        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5] bg-gradient-to-br from-amber-50 to-stone-200 flex items-center justify-center">
-          <div class="text-center text-stone-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-3 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <p class="text-sm font-medium opacity-50 tracking-wide">Foto B&amp;B</p>
-          </div>
+        <!-- Foto Chi siamo -->
+        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
+          <img
+            src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80"
+            alt="Colazione artigianale alla Residenza dei Fiori"
+            class="w-full h-full object-cover object-center"
+            loading="lazy"
+          />
+          <!-- Overlay leggero per badge -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
           <div class="absolute bottom-6 left-6 bg-white rounded-2xl shadow-lg px-5 py-3">
             <p class="text-xs text-stone-400 font-medium tracking-wide uppercase">In attività dal</p>
             <p class="text-3xl font-serif font-bold text-amber-600">2012</p>
@@ -172,6 +179,8 @@ import BookingForm from '../components/BookingForm.astro';
               name: 'Camera Doppia',
               desc: 'Accogliente e luminosa, con letto matrimoniale, parquet antico e vista sul cortile fiorito.',
               badge: 'Da €90/notte',
+              imageUrl: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80',
+              imageAlt: 'Camera doppia elegante con letto matrimoniale',
               amenities: [
                 { label: 'Wi-Fi',  icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
                 { label: 'A/C',    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
@@ -183,6 +192,8 @@ import BookingForm from '../components/BookingForm.astro';
               name: 'Camera Doppia Superior',
               desc: 'Più spaziosa, con soffitti affrescati originali del \'700, vasca da bagno e minibar incluso.',
               badge: 'Da €130/notte',
+              imageUrl: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
+              imageAlt: 'Camera superior con arredi eleganti e vasca',
               amenities: [
                 { label: 'Wi-Fi',   icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
                 { label: 'A/C',     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
@@ -194,6 +205,8 @@ import BookingForm from '../components/BookingForm.astro';
               name: 'Suite Junior',
               desc: 'Il nostro fiore all\'occhiello: salottino separato, terrazzino privato con vista sui tetti di Roma.',
               badge: 'Da €180/notte',
+              imageUrl: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
+              imageAlt: 'Suite junior con terrazzo e vista sui tetti di Roma',
               amenities: [
                 { label: 'Wi-Fi',             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>` },
                 { label: 'A/C',               icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19H5c-1 0-2-.9-2-2V7c0-1.1.9-2 2-2h3"/><path d="M16 5h3c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2h-3"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 12 12 16 8"/><polyline points="16 16 12 12 8 16"/></svg>` },
@@ -203,14 +216,14 @@ import BookingForm from '../components/BookingForm.astro';
             },
           ].map((room) => (
             <article class="bg-white rounded-3xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col group">
-              <!-- Placeholder immagine -->
-              <div class="aspect-video bg-gradient-to-br from-stone-100 to-amber-50 flex items-center justify-center relative overflow-hidden">
-                <div class="text-center text-stone-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                  <p class="text-xs font-medium opacity-60 tracking-wide">Foto camera</p>
-                </div>
+              <!-- Immagine camera reale -->
+              <div class="aspect-video relative overflow-hidden">
+                <img
+                  src={room.imageUrl}
+                  alt={room.imageAlt}
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
                 <span class="absolute top-3 right-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
                   {room.badge}
                 </span>
