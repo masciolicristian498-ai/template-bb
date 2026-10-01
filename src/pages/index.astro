@@ -470,7 +470,7 @@ import BookingForm from '../components/BookingForm.astro';
   <!-- ═══════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════════ -->
-  <footer class="bg-stone-900 text-stone-400 pt-16 pb-8 px-6 font-sans">
+  <footer class="bg-stone-900 text-stone-400 pt-16 pb-28 md:pb-8 px-6 font-sans">
     <div class="max-w-6xl mx-auto">
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10 pb-12 border-b border-stone-800">
 
@@ -527,6 +527,14 @@ import BookingForm from '../components/BookingForm.astro';
       </div>
     </div>
   </footer>
+
+  <!-- Sticky Booking Bar (Mobile) -->
+  <div class="fixed bottom-0 left-0 w-full z-50 p-4 bg-white shadow-[0_-4px_10px_rgba(0,0,0,0.05)] md:hidden border-t border-stone-100">
+    <a href="#prenota" class="flex items-center justify-center w-full gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-base px-6 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200">
+      Verifica Disponibilità
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
 
 </Layout>
 
