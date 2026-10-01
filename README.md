@@ -1,43 +1,64 @@
-# Astro Starter Kit: Minimal
+# template-bb — Landing Page per B&B
 
-```sh
-npm create astro@latest -- --template minimal
+Template di landing page completa per Bed & Breakfast, costruita con **Astro** e **Tailwind CSS**.
+
+Il progetto nasce come base riutilizzabile per strutture ricettive che vogliono una presenza web moderna, veloce e senza dipendenze da CMS o piattaforme esterne.
+
+## Funzionalità
+
+- Navbar fissa con navigazione ad ancoraggio e menu hamburger mobile
+- Hero section con call-to-action
+- Sezione "Chi siamo" con highlights della struttura
+- Griglia camere con badge prezzo e icone dei servizi
+- Sezione posizione con distanze dai punti di interesse
+- **Modulo di prenotazione via WhatsApp** — raccoglie i dati del soggiorno e apre direttamente una conversazione WhatsApp con il messaggio precompilato
+- Footer con contatti, orari e link legali
+- Design completamente responsive
+
+## Stack tecnico
+
+| Tecnologia | Utilizzo |
+|---|---|
+| [Astro](https://astro.build) | Framework SSG |
+| [Tailwind CSS v4](https://tailwindcss.com) | Styling utility-first |
+| TypeScript | Type safety |
+| Vanilla JS | Logica form WhatsApp |
+
+## Avvio in locale
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Il sito sarà disponibile su `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Build produzione
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Struttura del progetto
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```
+src/
+├── components/
+│   └── BookingForm.astro   # Form prenotazione con invio WhatsApp
+├── layouts/
+│   └── Layout.astro        # Layout base con Google Fonts
+├── pages/
+│   └── index.astro         # Landing page completa
+└── styles/
+    └── global.css          # Configurazione Tailwind
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Personalizzazione
 
-## 🧞 Commands
+Per adattare il template a una struttura reale è sufficiente:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Sostituire il numero WhatsApp in `BookingForm.astro`
+2. Aggiornare testi, prezzi e tipologie di camere in `index.astro`
+3. Aggiungere le foto reali nei placeholder
+4. Aggiornare indirizzo e contatti nel footer
