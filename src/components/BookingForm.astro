@@ -160,60 +160,64 @@ const today = new Date().toISOString().split('T')[0];
 </section>
 
 <script>
-  const WHATSAPP_URL = 'https://wa.me/393331234567?text=';
+  document.addEventListener('astro:page-load', () => {
+    const WHATSAPP_URL = 'https://wa.me/393331234567?text=';
 
-  /** Formatta una data ISO (YYYY-MM-DD) in formato italiano leggibile */
-  function formatDate(iso: string): string {
-    const [y, m, d] = iso.split('-');
-    return `${d}/${m}/${y}`;
-  }
-
-  const form = document.getElementById('booking-form') as HTMLFormElement;
-  const errorEl = document.getElementById('form-error') as HTMLParagraphElement;
-
-  function showError(msg: string) {
-    errorEl.textContent = msg;
-    errorEl.classList.remove('hidden');
-  }
-
-  function clearError() {
-    errorEl.textContent = '';
-    errorEl.classList.add('hidden');
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    clearError();
-
-    const checkIn  = (document.getElementById('check-in')  as HTMLInputElement).value;
-    const checkOut = (document.getElementById('check-out') as HTMLInputElement).value;
-    const guests   = (document.getElementById('guests')    as HTMLSelectElement).value;
-    const room     = (document.getElementById('room')      as HTMLSelectElement).value;
-
-    // --- Validazione base ---
-    if (!checkIn || !checkOut || !guests || !room) {
-      showError('Per favore compila tutti i campi prima di inviare la richiesta.');
-      return;
+    /** Formatta una data ISO (YYYY-MM-DD) in formato italiano leggibile */
+    function formatDate(iso: string): string {
+      const [y, m, d] = iso.split('-');
+      return `${d}/${m}/${y}`;
     }
 
-    if (checkIn >= checkOut) {
-      showError('La data di partenza deve essere successiva alla data di arrivo.');
-      return;
+    const form = document.getElementById('booking-form') as HTMLFormElement;
+    const errorEl = document.getElementById('form-error') as HTMLParagraphElement;
+
+    if (!form) return;
+
+    function showError(msg: string) {
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
     }
 
-    // --- Costruzione messaggio ---
-    const message = [
-      '🏨 *Richiesta di prenotazione*',
-      '',
-      `📅 Arrivo:     ${formatDate(checkIn)}`,
-      `📅 Partenza:   ${formatDate(checkOut)}`,
-      `👥 Ospiti:     ${guests}`,
-      `🛏️  Camera:     ${room}`,
-      '',
-      'Salve! Vorrei ricevere informazioni sulla disponibilità per il soggiorno indicato. Grazie!',
-    ].join('\n');
+    function clearError() {
+      errorEl.textContent = '';
+      errorEl.classList.add('hidden');
+    }
 
-    const url = WHATSAPP_URL + encodeURIComponent(message);
-    window.open(url, '_blank', 'noopener,noreferrer');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      clearError();
+
+      const checkIn  = (document.getElementById('check-in')  as HTMLInputElement).value;
+      const checkOut = (document.getElementById('check-out') as HTMLInputElement).value;
+      const guests   = (document.getElementById('guests')    as HTMLSelectElement).value;
+      const room     = (document.getElementById('room')      as HTMLSelectElement).value;
+
+      // --- Validazione base ---
+      if (!checkIn || !checkOut || !guests || !room) {
+        showError('Per favore compila tutti i campi prima di inviare la richiesta.');
+        return;
+      }
+
+      if (checkIn >= checkOut) {
+        showError('La data di partenza deve essere successiva alla data di arrivo.');
+        return;
+      }
+
+      // --- Costruzione messaggio ---
+      const message = [
+        '🏨 *Richiesta di prenotazione*',
+        '',
+        `📅 Arrivo:     ${formatDate(checkIn)}`,
+        `📅 Partenza:   ${formatDate(checkOut)}`,
+        `👥 Ospiti:     ${guests}`,
+        `🛏️  Camera:     ${room}`,
+        '',
+        'Salve! Vorrei ricevere informazioni sulla disponibilità per il soggiorno indicato. Grazie!',
+      ].join('\n');
+
+      const url = WHATSAPP_URL + encodeURIComponent(message);
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
   });
 </script>
