@@ -516,14 +516,22 @@ import BookingForm from '../components/BookingForm.astro';
             <li class="flex justify-between"><span>Reception</span><span class="text-stone-300">8:00 – 22:00</span></li>
           </ul>
           <div class="mt-6 flex gap-4">
-            <a href="#" class="text-xs text-stone-600 hover:text-amber-400 transition underline underline-offset-2">Privacy Policy</a>
-            <a href="#" class="text-xs text-stone-600 hover:text-amber-400 transition underline underline-offset-2">Cookie Policy</a>
+            <a href="/privacy-policy" class="text-xs text-stone-600 hover:text-amber-400 transition underline underline-offset-2">Privacy Policy</a>
           </div>
         </div>
       </div>
 
-      <div class="mt-8 text-center text-xs text-stone-600">
-        © {new Date().getFullYear()} Residenza dei Fiori · Giulia e Marco Bianchi · P.IVA 12345678901
+      <!-- Bottom legal bar -->
+      <div class="mt-8 pt-6 border-t border-stone-800 text-center space-y-1.5">
+        <p class="text-xs text-stone-500">
+          © {new Date().getFullYear()} Residenza dei Fiori. Tutti i diritti riservati.
+        </p>
+        <p class="text-xs text-stone-600">
+          P.IVA: [INSERIRE PARTITA IVA] · C.F.: [INSERIRE CODICE FISCALE]
+        </p>
+        <p class="text-xs text-stone-600">
+          Codice Struttura (CIN): [INSERIRE CODICE CIN]
+        </p>
       </div>
     </div>
   </footer>
