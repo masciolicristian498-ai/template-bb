@@ -100,5 +100,38 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://residenz
   </head>
   <body>
     <slot />
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-4 right-4 md:bottom-8 md:right-8 max-w-sm bg-stone-900 text-stone-300 p-6 rounded-2xl shadow-2xl z-[999] hidden translate-y-8 opacity-0 transition-all duration-500">
+      <h3 class="text-white font-semibold mb-2">Informativa sui Cookie</h3>
+      <p class="text-sm mb-4 leading-relaxed">Utilizziamo esclusivamente cookie tecnici strettamente necessari al funzionamento del sito, nel rispetto della tua privacy. Non usiamo cookie di profilazione.</p>
+      <div class="flex items-center justify-between gap-4">
+        <a href="/privacy-policy" class="text-sm text-stone-400 hover:text-white transition underline underline-offset-2">Scopri di più</a>
+        <button id="accept-cookies" class="bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-5 py-2 rounded-full transition">Ho capito</button>
+      </div>
+    </div>
+    
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        const banner = document.getElementById('cookie-banner');
+        const btn = document.getElementById('accept-cookies');
+        
+        if (banner && btn && !localStorage.getItem('cookies_accepted')) {
+          // Mostra con un piccolo ritardo
+          setTimeout(() => {
+            banner.classList.remove('hidden');
+            // Trigger reflow per avviare la transizione CSS
+            void banner.offsetWidth;
+            banner.classList.remove('translate-y-8', 'opacity-0');
+          }, 1000);
+
+          btn.addEventListener('click', () => {
+            localStorage.setItem('cookies_accepted', 'true');
+            banner.classList.add('translate-y-8', 'opacity-0');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+          });
+        }
+      });
+    </script>
   </body>
 </html>
