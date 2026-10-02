@@ -1,5 +1,7 @@
 # 🏨 Residenza dei Fiori — Modern B&B Template
 
+**🌍 Live Demo:** [https://template-bb.vercel.app](https://template-bb.vercel.app)
+
 Un template completo, performante e conversion-oriented per Bed & Breakfast e strutture ricettive, sviluppato con l'approccio **Mobile-First**. Costruito con **Astro** e **Tailwind CSS**, questo progetto elimina la necessità di CMS pesanti, offrendo un'esperienza utente fulminea e nativa, con prenotazioni dirette via WhatsApp.
 
 ## ✨ Highlight Tecnici
@@ -20,7 +22,7 @@ Questo progetto dimostra l'applicazione di best practices moderne per lo svilupp
 - **Styling**: [Tailwind CSS](https://tailwindcss.com) (v4.x)
 - **Icons**: SVG in-line (Zero icon-font load)
 - **Routing**: Astro ClientRouter (View Transitions)
-- **Deployment**: Configurato per build statiche (Vercel, Netlify, GitHub Pages)
+- **Deployment**: Vercel (CI/CD)
 
 ## 💻 Avvio in locale
 
@@ -34,16 +36,6 @@ npm run dev
 # Genera la build di produzione statica
 npm run build
 ```
-
-## 🌐 Deploy su Vercel (Gratuito)
-
-Il sito è pronto per essere pubblicato gratuitamente in 3 click usando Vercel:
-
-1. Crea un account su [Vercel](https://vercel.com/)
-2. Clicca su **Add New -> Project** e collega il tuo account GitHub
-3. Seleziona questo repository. Vercel riconoscerà automaticamente che si tratta di un progetto Astro e imposterà i comandi di build.
-4. Clicca su **Deploy**. 
-In 30 secondi avrai un URL pubblico professionale da inserire nel tuo curriculum o portfolio!
 
 ## 📂 Struttura del Progetto
 
@@ -60,6 +52,3 @@ src/
 └── styles/
     └── global.css          # Animazioni CSS custom (@keyframes)
 ```
-
-## ⚖️ Licenza
-Questo progetto è stato realizzato a scopo di portfolio ed è open-source. Le immagini utilizzate sono segnaposto recuperate tramite l'API di Unsplash.
