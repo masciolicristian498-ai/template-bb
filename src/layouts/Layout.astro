@@ -4,9 +4,17 @@ import '../styles/global.css';
 
 interface Props {
   title?: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title = 'Astro' } = Astro.props;
+const {
+  title = 'Residenza dei Fiori – B&B nel cuore di Roma',
+  description = 'Bed & Breakfast nel Rione Monti, a pochi passi dal Colosseo. Camere eleganti, colazione artigianale e l\'ospitalità di Giulia e Marco. Prenota su WhatsApp.',
+  ogImage = 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://residenzadeifiori.it');
 ---
 
 <html lang="it">
@@ -14,10 +22,74 @@ const { title = 'Astro' } = Astro.props;
     <ClientRouter />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Facebook, WhatsApp, Telegram) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="Residenza dei Fiori" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Schema.org JSON-LD (Dati strutturati per Google) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BedAndBreakfast",
+      "name": "Residenza dei Fiori",
+      "description": "Bed & Breakfast nel Rione Monti a Roma. Camere eleganti, colazione artigianale fatta in casa e posizione centrale a pochi passi dal Colosseo.",
+      "url": "https://residenzadeifiori.it",
+      "telephone": "+393331234567",
+      "email": "info@residenzadeifiori.it",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via dei Serpenti 48",
+        "addressLocality": "Roma",
+        "addressRegion": "RM",
+        "postalCode": "00184",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.8946,
+        "longitude": 12.4922
+      },
+      "image": ogImage,
+      "priceRange": "€€",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "4"
+      },
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "Wi-Fi gratuito", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Colazione inclusa", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true }
+      ],
+      "checkinTime": "14:00",
+      "checkoutTime": "11:00",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127",
+        "bestRating": "5"
+      },
+      "hasMap": "https://maps.google.com/?q=Via+dei+Serpenti+48+Roma"
+    })} />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
